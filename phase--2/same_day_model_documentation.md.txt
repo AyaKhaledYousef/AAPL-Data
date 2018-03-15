@@ -1,0 +1,40 @@
+same_day_model_documentation
+
+1-First thing first , we import our libraries and dataset and then
+we see the head of the data to know how the data looks like and use describe function 
+to see the percentile’s and other key statistics.
+
+2-Now that we are familiar with all these representation
+and can tell our own story let us move and create a model to which would predict our features.
+We are going to see what is linear regression and how do we do it ?
+
+
+Linear Regression :-
+
+In easy words a model in statistics which helps us predicts the future based upon past relationship of variables.
+So when you see your scatter plot being having data points placed linearly you know regression can help you!
+
+Regression works on the line equation , y=mx+c , trend line is set through the data points to predict the outcome.
+
+3-The variable we are predicting is called the criterion variable and is referred to as Y.
+The variable we are basing our predictions on is called the predictor variable and is referred to as X.
+When there is only one predictor variable, the prediction method is called Simple Regression. 
+
+
+4- We use train data and test data ,
+train data to train our machine and test data to see if it has learnt the data well or not.
+Before anything , I want say that to remember that the machine is the student and train data is the syllabus and test data is the exam. 
+we see how much the machine has scored and if it scores well are model is successful.
+
+
+5-We import our dependencies , for linear regression we use sklearn (built in python library) and import linear regression from it.
+We then initialize Linear Regression to a variable reg. 
+we also convert dates to 1’s and 0’s so that it doesn’t influence our data much . 
+
+
+We again import another dependency to split our data into train and test.
+
+I’ve made my train data as 75% and 25% of the data to be my test data , and randomized the splitting of data by using random_state.
+
+
+6- So now , we have train data , test data and labels for both let us fit our train and test data into linear regression model.

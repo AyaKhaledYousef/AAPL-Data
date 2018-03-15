@@ -1,0 +1,7 @@
+$ git config --global user.name "AyaKhaledYousef"
+$ git config --global user.email aya.k.yousef@gmail.com
+$ git init
+$ git add .
+$ git commit -m 'first commit'
+$ git remote add origin https://github.com/AyaKhaledYousef/DataFrame.git
+$ git push origin master
