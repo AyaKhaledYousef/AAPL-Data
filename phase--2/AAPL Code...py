@@ -27,6 +27,40 @@ data['same_day_strategy'] = np.where(data['same_day_delta'] <= 0,'0' ,'1')
 data['next_close_delta'] = 100 * (1 - data.iloc[0].Close / data.Close)
 data['next_close_strategy'] = np.where(data['next_close_delta'] <= 1,'0' ,'1')
 
+data['year'] = pd.DatetimeIndex(data['Date']).year #extract year from Date
+data['month'] = pd.DatetimeIndex(data['Date']).month # extract month from Date
+            
+#aya=data.groupby('month').Close.agg(['mean','max','min'])
+
+Average_Close=data.groupby(['month','year']).mean().Close
+Total=data.groupby(['month','year']).agg({"Close":[min,max],"Open":[min,max],"High":[min,max],"Low":[min,max]})
+
+Average_Open=data.groupby(['month','year']).mean().Open
+Highest_Close=data.groupby(['month','year']).max().Close
+Lowest_Open=data.groupby(['month','year']).min().Open
+Highest_high=data.groupby(['month','year']).max().High
+Highest_low=data.groupby(['month','year']).max().Low
+Lowest_high=data.groupby(['month','year']).min().High
+Lowest_low=data.groupby(['month','year']).min().Low
+                       
+Total.to_csv("mohamedaa.csv")               
+                       
+"""Lowest_low.to_csv("ayaaa.csv")   
+Lowest_high.to_csv("ayaaa.csv")
+Highest_low.to_csv("ayaaa.csv")
+Highest_high.to_csv("ayaaa.csv")
+Lowest_Open.to_csv("ayaaa.csv")
+Highest_Close.to_csv("ayaaa.csv")
+Average_Open.to_csv("ayaaa.csv")"""
+#print (ayaaa)          
+
+                       
+"""                    
+Average_Close.to_csv('out.csv')
+monthly=pd.read_csv('out.csv')
+monthly['year'] = pd.DatetimeIndex(monthly['Date']).year
+monthly['month'] = pd.DatetimeIndex(monthly['Date']).month
+#aya['Average_Close']
 
 # information per month
 keep_col = ['Date'] #write the Date column
@@ -34,14 +68,24 @@ new_f = data[keep_col]
 new_f.to_csv("monthly_analysis.csv", index=False) #write csv file
 
 monthly=pd.read_csv("monthly_analysis.csv")
-monthly['year'] = pd.DatetimeIndex(monthly['Date']).year #extract year from Date
-monthly['month'] = pd.DatetimeIndex(monthly['Date']).month # extract month from Date
-                   
+#monthly['year'] = pd.DatetimeIndex(monthly['Date']).year #extract year from Date
+#monthly['month'] = pd.DatetimeIndex(monthly['Date']).month # extract month from Date
+#monthly.append(Close)
+#print (monthly)
+
+
+#aya=monthly.groupby('year').data[Close].mean()
+f = open('csvfile.csv','w')
+f=pd.read_csv("csvfile.csv")
+
+f['mohamed']=data.groupby(['month','year']).mean().Close
+#f.write() #Give your csv text here.
+## Python will convert \n to os.linesep
+f.close()    
 
 #plot
 data['same_day_delta'].value_counts().plot() #plot the column
 data['same_day_delta'].value_counts().plot.hist() #Plot the distribution of “same_day_delta”.
-
 #the execution time
 start_time = time.time()
 print("--- %s data ---" % (time.time() - start_time))
@@ -83,4 +127,4 @@ b_pred=classifier.predict(A_test)
 #excution time for this model model
 
 start_time = time.time()
-print("--- %s b_pred ---" % (time.time() - start_time))
+print("--- %s b_pred ---" % (time.time() - start_time))"""
